@@ -204,8 +204,9 @@ footer .mission{color:var(--muted);font-size:14.5px;margin:18px 0 22px;max-width
 .fbottom{display:flex;justify-content:space-between;margin-top:70px;padding-top:26px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);flex-wrap:wrap;gap:12px}
 
 /* reveal */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
-.js .rv.in{opacity:1;transform:none}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero .rv{animation:up .9s ease both}
+.hero .flow.rv{animation-delay:.15s}
 
 /* responsive */
 @media(max-width:1080px){
@@ -437,10 +438,6 @@ footer .mission{color:var(--muted);font-size:14.5px;margin:18px 0 22px;max-width
 </div></footer>
 
 <script>
-document.documentElement.classList.add('js');
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
-setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')),2500);
 document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
 </script>
 </body>
