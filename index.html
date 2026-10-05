@@ -83,7 +83,7 @@ background:radial-gradient(circle,rgba(200,16,46,.35),transparent 65%);filter:bl
 .brands{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden}
 .brands .label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:16px}
 .track{display:flex;gap:64px;width:max-content;animation:scroll 38s linear infinite}
-.track span{font-family:var(--display);font-weight:700;font-stretch:90%;font-size:26px;color:#5d5d66;white-space:nowrap;transition:.2s}
+.track span{font-family:var(--display);font-weight:700;font-stretch:90%;font-size:26px;color:#80808a;white-space:nowrap;transition:.2s}
 .track span:hover{color:#fff}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
@@ -204,8 +204,8 @@ footer .mission{color:var(--muted);font-size:14.5px;margin:18px 0 22px;max-width
 .fbottom{display:flex;justify-content:space-between;margin-top:70px;padding-top:26px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);flex-wrap:wrap;gap:12px}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
-.rv.in{opacity:1;transform:none}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.js .rv.in{opacity:1;transform:none}
 
 /* responsive */
 @media(max-width:1080px){
@@ -437,8 +437,10 @@ footer .mission{color:var(--muted);font-size:14.5px;margin:18px 0 22px;max-width
 </div></footer>
 
 <script>
+document.documentElement.classList.add('js');
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')),2500);
 document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
 </script>
 </body>
